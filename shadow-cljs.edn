@@ -1,0 +1,16 @@
+{:deps
+ {:aliases [:client :client/dev :client/test]}
+
+ :build-defaults
+ {:build-hooks [(shadow-git-inject.core/hook)]}
+
+ :dev-http 
+ {3001 "public"}
+
+ :builds
+ {:client
+  {:target :browser
+   :output-dir "public/js"
+   :modules
+   {:main
+    {:init-fn core/start}}}}}

@@ -1,0 +1,22 @@
+{:paths []
+
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        org.clojure/clojurescript {:mvn/version "1.11.132"}
+        org.slf4j/slf4j-nop {:mvn/version "2.0.9"}}
+
+ :aliases
+ {:client
+  {:extra-paths ["src/client" "src/common" "public" "resources"]
+   :extra-deps {thheller/shadow-cljs   {:mvn/version "2.25.2"}
+                re-frame/re-frame {:mvn/version "1.4.3"}
+                reagent/reagent {:mvn/version "1.2.0"}
+                day8/shadow-git-inject {:mvn/version "0.0.5"}
+                metosin/reitit {:mvn/version "0.5.18"}
+                cljsjs/moment {:mvn/version "2.17.1-1"}
+                cljsjs/moment-timezone {:mvn/version "0.5.11-1"}}}
+
+  :client/dev 
+  {:extra-deps {thheller/shadow-cljs {:mvn/version "2.28.2"}}}
+
+  :client/test
+  {:extra-paths ["src/test/client"]}}}

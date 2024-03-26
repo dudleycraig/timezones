@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#timezones {
+  display: flex; 
+  margin: 10px 30px; 
+  flex-direction: column;
+}
+
+#timezones > .timezone {
+  margin: 3px 0;
+}
+
+.timezone .label,
+.timezone .clock,
+.timezone .zone {
+  float: left;
+  font-size: 1em;
+  margin: 2px;
+  background: white;
+}
+
+.timezone .label {
+  text-align: right;
+  padding-right: 3px;
+  width: 150px;
+  background: transparent;
+}
+
+.timezone .clock {
+  font-variant-numeric: tabular-nums; 
+  font-size: 1em; 
+  width: 100px; 
+  text-align: center;
+  border: 1px solid #000; 
+  border-radius: 3px; 
+}
+
+.timezone .clock > .hours,
+.timezone .clock > .minutes,
+.timezone .clock > .seconds {
+  padding: 0 2px;
+}
+
+.timezone .zone {
+  font-size: 1em;
+  width: 300px;
+  text-align: left;
+  border: 1px solid #000;
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+.timezone .timezone-select {
+  padding: 2px 3px;
+}
+
+.timezone.static input[type="time"] {
+  font-size: 0.995em;
+}
+
+
+
+
+
+
