@@ -7,9 +7,9 @@
 
 (defn component [router]
   (let [current-route @(rc/subscribe [:router/current-route]) 
-        route-handler (-> current-route :data :handler)]
+        route-view (-> current-route :data :view)]
     [stage/component
      [header-bar/component
       [main-navigation/component router]]
      [page-header/component router]
-     [route-handler]]))
+     (when current-route [route-view])]))

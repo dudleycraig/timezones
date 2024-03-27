@@ -5,8 +5,6 @@
             [cljsjs.moment]
             [cljsjs.moment-timezone]
             [utilities :as utils]
-            [components.clock :as clock]
-            [components.select :as select]
             [components.static-view :as static-view]
             [components.offset-view :as offset-view]
             [components.local-view :as local-view]))
@@ -53,6 +51,9 @@
   ::static-time-set
   (fn [db [_ static-time]]
     (assoc db :static-time {:time static-time})))
+
+;; dispatch navigate 
+;; {:on-click #(rc/dispatch [::push-state :router/part-1}
 
 (defn page [_]
   [:div {:id "timezones"}

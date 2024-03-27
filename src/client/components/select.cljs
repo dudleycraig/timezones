@@ -1,6 +1,7 @@
 (ns components.select
   (:require [cljsjs.moment]
-            [cljsjs.moment-timezone]))
+            [cljsjs.moment-timezone]
+            [utilities :as utils]))
 
 (defn component [{timezones :timezones 
                   current-timezone :current-timezone 
@@ -12,7 +13,7 @@
   (into
     [:select
      {:class "timezone-select zone" 
-      :value current-timezone 
+      :value current-timezone
       :onChange onChange}]
     (map
       (fn [timezone] 

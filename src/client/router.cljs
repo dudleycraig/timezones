@@ -4,16 +4,7 @@
             [reitit.frontend.controllers :as rfc]
             [reitit.frontend.easy :as rfe]
             [re-frame.core :as rc]
-
             [pages.timezones :as timezones]))
-
-(def routes
-  ["/"
-   ["" {:name ::part-1
-        :title "Part 1"
-        :handler timezones/page
-        :controllers [{:start (fn [] (. js/console (log "entering Timezones")))
-                       :stop (fn [] (. js/console (log "exiting Timezones")))}]}]])
 
 (rc/reg-fx 
   :push-state
@@ -45,6 +36,14 @@
   ([k params query]
    (rfe/href k params query)))
 
+(def routes
+  ["/"
+   ["" {:name ::part-1
+        :title "Part 1"
+        :view timezones/page
+        :controllers [{:start (fn [& params] (. js/console (log "entering ::part-1")))
+                       :stop (fn [& params] (. js/console (log "leaving ::part-1")))}]}]])
+
 (defn on-navigate [new-match]
   (when new-match
     (rc/dispatch [::navigated new-match])))
@@ -54,8 +53,13 @@
     routes
     {:data {:coercion rcs/coercion}}))
 
-(defn init []
+(defn init! []
   (rfe/start!
     router
     on-navigate 
-    {:use-fragment false}))
+    {:use-fragment true}))
+
+
+
+
+

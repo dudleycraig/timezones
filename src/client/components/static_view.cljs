@@ -15,7 +15,7 @@
     [:div {:class "timezone static"}
      [:label {:class "label"} "static timezone:"]
      [select/component {:timezones (utils/timezones)
-                        :current-timezone current-timezone
+                        :current-timezone (or current-timezone (utils/local-timezone))
                         :onChange (fn [^js event] 
                                     (rc/dispatch [:pages.timezones/current-static-timezone-set (.. event -target -value)]))}]
      [:input {:class "clock"

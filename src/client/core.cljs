@@ -3,20 +3,25 @@
             [re-frame.core :as rc]
             [router :as router]
             [components.page :as page]
-            [db :as db]))
+            [db]))
 
-(defn mount-ui []
-  (router/init)
-  (rd/render
-    [page/component {:router router/router}]
-    (. js/document getElementById "main")))
+(defn mount-client []
+  (when-let [client (. js/document getElementById "client")]
+    (rd/render
+      [page/component {:router router/router}]
+      client)))
 
-(defn ^:dev/after-load clear-cache-and-render! 
-  []
-  (rc/clear-subscription-cache!)
-  (mount-ui))
-
-(defn start
+(defn ^:export render!
+  "initial render of client"
   []
   (rc/dispatch-sync [:db/initialize])
-  (mount-ui))
+  (rc/clear-subscription-cache!)
+  (router/init!)
+  (mount-client))
+
+(defn ^:dev/after-load re-render
+  "re-render of client"
+  []
+  (mount-client))
+
+

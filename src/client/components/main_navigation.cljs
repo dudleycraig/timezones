@@ -1,6 +1,5 @@
 (ns components.main-navigation
   (:require [reitit.core :as rec]
-            [reitit.frontend.easy :as rfe]
             [re-frame.core :as rc]
             [router :as router]))
 

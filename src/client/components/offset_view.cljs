@@ -12,7 +12,7 @@
     [:div {:class "timezone offset"}
      [:label {:class "label"} "offset timezone:"]
      [select/component {:timezones (utils/timezones)
-                        :current-timezone current-timezone
+                        :current-timezone (or current-timezone (utils/local-timezone))
                         :onChange (fn [^js event]
                                     (rc/dispatch [:pages.timezones/current-offset-timezone-set (.. event -target -value)]))}]
      [clock/component {:class "clock" :moment offset-moment}]]))

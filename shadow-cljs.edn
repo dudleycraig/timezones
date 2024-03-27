@@ -12,5 +12,5 @@
   {:target :browser
    :output-dir "public/js"
    :modules
-   {:main
-    {:init-fn core/start}}}}}
+   {:client
+    {:init-fn core/render!}}}}}
